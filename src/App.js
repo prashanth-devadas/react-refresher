@@ -10,9 +10,14 @@ function App() {
     { title: "Credit Card", amount: 230.34, date: new Date(2021, 5, 11) },
   ];
 
+  const addExpenseHandler = expense => {
+    console.log("from app.js");
+    console.log(expense);
+  }
+
   return (
     <div>
-      <NewExpense />
+      <NewExpense onAddExpense={addExpenseHandler} />
       <Expense expense={expenses}/>
     </div>
   );

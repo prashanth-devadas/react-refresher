@@ -1,26 +1,24 @@
-import ExpenseItem from "./ExpenseItem";
 import "./Expense.css"
 import Card from "./Card";
 import ExpensesFilter from "./NewExpense/ExpensesFilter";
+import { useState } from "react";
+import ExpensesList from "./ExpensesList";
 
-function Expense(props) {
+const Expense = (props) =>  {
+  
+  const [expenseFilterResult, setExpenseFilterResult] = useState([]);
 
   const pickDropDownHandler = (yearPicked) => {
-    console.log(yearPicked);
-  }
+    const expenseFilter = props.expense.filter(exp => exp.date.getFullYear() === Number(yearPicked))
+    setExpenseFilterResult(expenseFilter); 
+  }  
 
 
   return (
     <div>
       <Card className="expenses">
       <ExpensesFilter onPickDropdown={pickDropDownHandler}/>
-        {props.expense.map
-        (exp => <ExpenseItem 
-          key={exp.id}
-          title={exp.title} 
-          amount={exp.amount} 
-          date={exp.date}
-        />)}
+        <ExpensesList filterResult={expenseFilterResult} />
       </Card>
     </div>
   );

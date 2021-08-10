@@ -3,6 +3,7 @@ import Card from "./Card";
 import ExpensesFilter from "./NewExpense/ExpensesFilter";
 import { useState } from "react";
 import ExpensesList from "./ExpensesList";
+import ExpensesChart from "./ExpensesChart";
 
 const Expense = (props) =>  {
   
@@ -18,6 +19,7 @@ const Expense = (props) =>  {
     <div>
       <Card className="expenses">
       <ExpensesFilter onPickDropdown={pickDropDownHandler}/>
+      <ExpensesChart expFilterResult={expenseFilterResult}/>
         <ExpensesList filterResult={expenseFilterResult} />
       </Card>
     </div>
